@@ -3,6 +3,14 @@ stackoverflow-tagger
 
 Automatically generate tags for stackoverflow questions.
 
+Installation
+-----------
+* Install conda-env: `conda install -c conda conda-env`
+* Change to project directory and create conda environment: `conda env create`
+* Activate conda environment: `activate stackoverflow-tagger` or `source activate stackoverflow-tagger`
+* Install requirements: `pip install -r requirements.txt`
+* Check installed packages: `conda list`
+
 Project Organization
 ------------
 
