@@ -89,11 +89,16 @@ def main():
     raw_data_path = os.path.join('..', '..', 'data', 'raw')
     processed_data_path = os.path.join('..', '..', 'data', 'processed')
     interim_data_path = os.path.join('..', '..', 'data', 'interim')
-    
+
+    # convert_to_csv(
+    #     os.path.join(raw_data_path, 'Tags.xml'),
+    #     os.path.join(processed_data_path, 'tags.csv'),
+    #     tags_schema
+    # )
     convert_to_csv(
-        os.path.join(raw_data_path, 'Tags.xml'),
-        os.path.join(processed_data_path, 'tags.csv'),
-        tags_schema
+        os.path.join(raw_data_path, 'Posts.xml'),
+        os.path.join(processed_data_path, 'posts.csv'),
+        posts_schema
     )
 
 

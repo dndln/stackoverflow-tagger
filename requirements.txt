@@ -4,3 +4,4 @@ coverage
 awscli
 flake8
 python-dotenv>=0.7.1
+tqdm
