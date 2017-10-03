@@ -19,10 +19,12 @@ def main():
     """
     now = time.strftime('%Y%m%d%H%M%S')
 
-    info = get_info(now)
-    info_filename = 'info_' + now + '.csv'
-    info.to_csv(os.path.join('..', '..', 'data', 'raw', info_filename), index=False)
-    # make sure to add a custom filter to get .body
+    # info = get_info(now)
+    # info_filename = 'info_' + now + '.csv'
+    # info.to_csv(os.path.join('..', '..', 'data', 'raw', info_filename), index=False)
+
+    questions = get_questions(now)
+
     # don't talk about all this detail in the talk
 
 def get_info(now):
@@ -49,7 +51,16 @@ def get_questions(now):
     url = 'https://api.stackexchange.com/2.2/questions'
     payload = {
                     'site': 'stackoverflow',
-
+                    'order': 'desc',
+                    'sort': 'activity',
+                    'filter': '!4)zhYBvQ2q6LTHHe8'
+              }
+    # https://api.stackexchange.com/2.2/filters/create?unsafe=true&filter=!4)zhYBvQ2q6LTHHe8
+    r = requests.get(url, params=payload)
+    rjson = r.json()
+    # items = rjson['items'][0]
+    # use both the original question and the edited question?
+    ipdb.set_trace()
     pass
 
 def get_accepted_answers(now):
