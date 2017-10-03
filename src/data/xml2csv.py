@@ -57,11 +57,11 @@ posthistory_schema = [
     'Text', # nvarchar (max)
 ]
 
-def dump(fn, schema):
+def dump(fp, schema):
     """
-    Read a stream from xml filename, yield next row
+    Read a stream from xml filepath, yield next row
     """
-    tree = ET.iterparse(fn)
+    tree = ET.iterparse(fp)
     for event, elem in tqdm.tqdm(tree):
         if elem.tag != 'row':
             continue
@@ -90,16 +90,33 @@ def main():
     processed_data_path = os.path.join('..', '..', 'data', 'processed')
     interim_data_path = os.path.join('..', '..', 'data', 'interim')
 
+    schema_dict = {
+        'Posts.xml': posts_schema,
+        'Tags.xml': tags_schema,
+        'PostHistory.xml': posthistory_schema
+    }
+
+    xml_filename = sys.argv[1]
+    csv_filename = sys.argv[2]
+    schema = schema_dict[xml_filename]
+
+    # sample use: 'python ./xml2csv.py Tags.xml tags.csv'
+    convert_to_csv(
+        os.path.join(raw_data_path, xml_filename),
+        os.path.join(interim_data_path, csv_filename),
+        schema
+    )
+
     # convert_to_csv(
     #     os.path.join(raw_data_path, 'Tags.xml'),
-    #     os.path.join(processed_data_path, 'tags.csv'),
+    #     os.path.join(interim_data_path, 'tags.csv'),
     #     tags_schema
     # )
-    convert_to_csv(
-        os.path.join(raw_data_path, 'Posts.xml'),
-        os.path.join(processed_data_path, 'posts.csv'),
-        posts_schema
-    )
+    # convert_to_csv(
+    #     os.path.join(raw_data_path, 'Posts.xml'),
+    #     os.path.join(interim_data_path, 'posts.csv'),
+    #     posts_schema
+    # )
 
 
 
