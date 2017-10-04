@@ -106,19 +106,8 @@ def main():
         os.path.join(interim_data_path, csv_filename),
         schema
     )
-
-    # convert_to_csv(
-    #     os.path.join(raw_data_path, 'Tags.xml'),
-    #     os.path.join(interim_data_path, 'tags.csv'),
-    #     tags_schema
-    # )
-    # convert_to_csv(
-    #     os.path.join(raw_data_path, 'Posts.xml'),
-    #     os.path.join(interim_data_path, 'posts.csv'),
-    #     posts_schema
-    # )
-
-
+    
 
 if __name__ == '__main__':
+    # sample use: 'python ./xml2csv.py Tags.xml tags.csv'
     main()
