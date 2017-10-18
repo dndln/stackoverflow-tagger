@@ -86,9 +86,10 @@ def convert_to_csv(xml_filepath, csv_filepath, schema):
         writer.writerow(line)
 
 def main():
-    raw_data_path = os.path.join('..', '..', 'data', 'raw')
-    processed_data_path = os.path.join('..', '..', 'data', 'processed')
-    interim_data_path = os.path.join('..', '..', 'data', 'interim')
+    # 'make' runs from the base dir
+    raw_data_path = os.path.join('data', 'raw')
+    processed_data_path = os.path.join('data', 'processed')
+    interim_data_path = os.path.join('data', 'interim')
 
     schema_dict = {
         'Posts.xml': posts_schema,
@@ -106,7 +107,7 @@ def main():
         os.path.join(interim_data_path, csv_filename),
         schema
     )
-    
+
 
 if __name__ == '__main__':
     # sample use: 'python ./xml2csv.py Tags.xml tags.csv'

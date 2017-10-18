@@ -8,8 +8,9 @@ Installation
 * Install conda-env: `conda install -c conda conda-env`
 * Change to project directory and create conda environment: `conda env create`
 * Activate conda environment: `activate stackoverflow-tagger` or `source activate stackoverflow-tagger`
-* Install requirements: `pip install -r requirements.txt`
-* Check installed packages: `conda list`
+* Create `data`, `external`, `interim`, `processed`, `raw` folders.
+* Download and unzip `stackoverflow.com-Posts.7z` and `stackoverflow.com-Tags.7z` into `data/raw`
+* run `make data` (takes a long time to convert Posts.xml!)
 
 Project Organization
 ------------
